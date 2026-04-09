@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulseek Bombado</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-texture"></div>
+    <div class="container">
+        
+        <header>
+            <h1 class="neon-blue">SOULSEEK <span class="neon-green">BOMBADO</span></h1>
+            <p>Ultimate Playlist Downloader</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="download">Download</button>
+            <button class="tab-btn" data-tab="settings">Configurações</button>
+        </div>
+
+        <main>
+            <!-- Tela de Download -->
+            <section id="tab-download" class="tab-content active">
+                <div class="input-group">
+                    <label for="spotify-url">Link da Playlist do Spotify:</label>
+                    <input type="text" id="spotify-url" placeholder="https://open.spotify.com/playlist/..." autocomplete="off">
+                </div>
+                
+                <div class="input-group">
+                    <label for="download-path">Pasta de Destino:</label>
+                    <div class="row-input">
+                        <input type="text" id="download-path" value="Downloads">
+                        <button class="btn-small btn-blue" onclick="browseFolder()">📁 Procurar</button>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-blue" onclick="startDownload('spotdl')">
+                        SpotDL <br><small>(Rápido)</small>
+                    </button>
+                    <button class="btn btn-green" onclick="startDownload('hybrid')">
+                        Hybrid ⭐ <br><small>(Recomendado)</small>
+                    </button>
+                    <button class="btn btn-purple" onclick="startDownload('soulseek')">
+                        Soulseek <br><small>(Spot+Slskd)</small>
+                    </button>
+                </div>
+
+                <div class="console-box" id="console-output">
+                    <div class="log">Aguardando comandos...</div>
+                </div>
+            </section>
+
+            <!-- Tela de Configurações -->
+            <section id="tab-settings" class="tab-content">
+                <div class="settings-card">
+                    <h3>Spotify API credentials</h3>
+                    <div class="input-group">
+                        <label for="set-clientid">Client ID: <a href="https://developer.spotify.com/dashboard" target="_blank" style="color:var(--neon-blue); font-size:0.8em; text-decoration:none;">(Pegar chave no Spotify Developer)</a></label>
+                        <input type="text" id="set-clientid" placeholder="Cole seu Client ID aqui" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="set-clientsecret">Client Secret:</label>
+                        <input type="password" id="set-clientsecret" placeholder="Cole seu Client Secret aqui" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>Opções de Download</h3>
+                    <div class="input-group">
+                        <label for="set-download-path">Pasta Global de Downloads:</label>
+                        <div class="row-input">
+                            <input type="text" id="set-download-path" value="Downloads">
+                            <button class="btn-small btn-blue" onclick="browseFolder('set-download-path')">📁 Mudar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3>Soulseek credentials</h3>
+                    <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px;">(Opcional) Se você já usa o Soulseek oficial neste PC, o app se conectará sozinho.</p>
+                    <div class="input-group">
+                        <label for="set-slskuser">Username:</label>
+                        <input type="text" id="set-slskuser" placeholder="Seu usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="set-slskpass">Password (Opcional):</label>
+                        <input type="password" id="set-slskpass" placeholder="Sua senha">
+                    </div>
+                </div>
+
+                <button class="btn btn-green save-btn" onclick="saveSettings()">Salvar Configurações</button>
+                <div id="settings-msg"></div>
+            </section>
+        </main>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

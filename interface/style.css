@@ -1,0 +1,278 @@
+:root {
+    --neon-blue: #00f3ff;
+    --neon-blue-glow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 40px #00f3ff;
+    --neon-green: #39ff14;
+    --neon-green-glow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #39ff14;
+    --neon-purple: #b026ff;
+    --neon-purple-glow: 0 0 10px #b026ff, 0 0 20px #b026ff, 0 0 40px #b026ff;
+    --bg-dark: #0a0a0a;
+    --glass-bg: rgba(20, 20, 20, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background-color: var(--bg-dark);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Textura Fibra de Carbono */
+.background-texture {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color: #121212;
+    background-size: 16px 16px;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.neon-blue {
+    color: var(--neon-blue);
+    text-shadow: var(--neon-blue-glow);
+}
+
+.neon-green {
+    color: var(--neon-green);
+    text-shadow: var(--neon-green-glow);
+}
+
+header p {
+    font-size: 1rem;
+    color: #aaa;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Abas */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.tab-btn:hover, .tab-btn.active {
+    background: rgba(0, 243, 255, 0.1);
+    color: #fff;
+    border-color: var(--neon-blue);
+    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Glassmorphism */
+main {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 25px;
+    flex: 1;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+}
+
+.row-input {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    padding: 0 15px;
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid var(--neon-blue);
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.btn-small:hover {
+    background: var(--neon-blue);
+    color: #000;
+    box-shadow: var(--neon-blue-glow);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background: rgba(10, 10, 10, 0.8);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn small {
+    display: block;
+    font-size: 0.65em;
+    opacity: 0.8;
+    margin-top: 3px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-blue { border: 1px solid var(--neon-blue); box-shadow: 0 0 5px rgba(0, 243, 255, 0.1); }
+.btn-blue:hover { background: var(--neon-blue); color: #000; box-shadow: var(--neon-blue-glow); }
+
+.btn-green { border: 1px solid var(--neon-green); box-shadow: 0 0 5px rgba(57, 255, 20, 0.1); }
+.btn-green:hover { background: var(--neon-green); color: #000; box-shadow: var(--neon-green-glow); }
+
+.btn-purple { border: 1px solid var(--neon-purple); box-shadow: 0 0 5px rgba(176, 38, 255, 0.1); }
+.btn-purple:hover { background: var(--neon-purple); color: #000; box-shadow: var(--neon-purple-glow); }
+
+/* Console */
+.console-box {
+    margin-top: 30px;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 6px;
+    height: 180px;
+    overflow-y: auto;
+    padding: 10px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.console-box .log {
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 2px;
+}
+
+/* Settings */
+.settings-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #222;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.settings-card h3 {
+    margin-bottom: 15px;
+    color: var(--neon-blue);
+    font-family: 'Orbitron', sans-serif;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+.save-btn {
+    width: 100%;
+}
+#settings-msg {
+    margin-top: 10px;
+    text-align: center;
+    color: var(--neon-green);
+    font-size: 0.9rem;
+}
+
+/* Custom Scrollbar for console */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
